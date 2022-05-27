@@ -1,3 +1,29 @@
+<?php
+include 'connect.php';
+
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $email=$_POST['email'];
+    $mobile=$_POST['mobile'];
+    $password=$_POST['password'];
+
+    $sql="insert into `user`(name,email,mobile,password) values('$name', '$email', '$mobile', '$password')";
+    $result= mysqli_query($con,$sql);
+
+    if($result){
+        echo  '<script> alert("data inserted successfully") </script>';
+  
+
+    }
+    else{
+        die(mysqli_error($con));
+    }
+}
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -24,25 +50,24 @@
 
             <div class="mb-3">
                 <label>Mobile</label>
-                <input type="email" class="form-control" autocomplete="off"    placeholder="Enter your mobile number" name="mobile">
+                <input type="text" name="mobile" class="form-control" autocomplete="off"    placeholder="Enter your mobile number">
             </div>
 
             <div class="mb-3">
                 <label>Password</label>
-                <input type="email" class="form-control" autocomplete="off"    placeholder="Enter your password password" name="password">
+                <input type="password" class="form-control" autocomplete="off"    placeholder="Enter your password" name="password">
             </div>
 
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit" >Submit</button>
         </form>
     </div>
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>
 

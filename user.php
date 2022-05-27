@@ -7,12 +7,13 @@ if(isset($_POST['submit'])){
     $mobile=$_POST['mobile'];
     $password=$_POST['password'];
 
+    
     $sql="insert into `user`(name,email,mobile,password) values('$name', '$email', '$mobile', '$password')";
     $result= mysqli_query($con,$sql);
 
     if($result){
-        echo  '<script> alert("data inserted successfully") </script>';
-  
+        echo  "data inserted successfully";
+
 
     }
     else{

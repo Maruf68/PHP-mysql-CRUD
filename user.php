@@ -7,12 +7,12 @@ if(isset($_POST['submit'])){
     $mobile=$_POST['mobile'];
     $password=$_POST['password'];
 
-    
+
     $sql="insert into `user`(name,email,mobile,password) values('$name', '$email', '$mobile', '$password')";
     $result= mysqli_query($con,$sql);
 
     if($result){
-        echo  "data inserted successfully";
+        header('location:display.php');
 
 
     }

@@ -34,6 +34,7 @@ include 'connect.php';
       <th scope="col">Email</th>
       <th scope="col">Mobile</th>
       <th scope="col">Password</th>
+      <th scope="col">Operation</th>
     </tr>
   </thead>
   <tbody>
@@ -49,36 +50,30 @@ if($result){
           $mobile=$row['mobile'];
           $password=$row['password'];
 
+
           echo '<tr>
           <th scope="row">'.$id.' </th>
           <td>'.$name.'</td>
           <td>'.$email.'</td>
           <td>'.$mobile.'</td>
           <td>'.$password.'</td>
+          <td>
+          <button class="btn btn-primary">
+          <a href="update.php" class="text-light">Update</a>
+          </button>
+   
+          <button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'" class="text-light" >Delete</a>
+          </button>
+       </td>
         </tr>';
 
 
    }
 }
   ?>
+   
 
-    <!-- <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr> -->
+   
   </tbody>
 </table>
 

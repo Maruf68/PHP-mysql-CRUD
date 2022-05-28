@@ -1,9 +1,12 @@
 <?php
 
-$con= new mysqli('localhost','root','','crud');
+$con=  mysqli_connect("localhost","root","","crud");
 
-if(!$con){
-    die(mysqli_error($con));
+if($con){
+   
+    // echo 'connection sucessfull';
+
+    // die(mysqli_error($con));
 
 }
 

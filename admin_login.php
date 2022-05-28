@@ -1,7 +1,5 @@
 <?php
 include 'connect.php';
-
-
 ?>
 
 
@@ -32,13 +30,13 @@ include 'connect.php';
             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
             <div class="form-outline mb-4">
-              <input type="text" id="form2Example18" name="AdminName" class="form-control form-control-lg" />
-              <label class="form-label" for="form2Example18">Username</label>
+              <input type="text" placeholder="Enter Username" id="form2Example18" name="AdminName" class="form-control form-control-lg" />
+              <label class="form-label" for="form2Example18"></label>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example28" name="AdminPassword"  class="form-control form-control-lg" />
-              <label class="form-label" for="form2Example28">Password</label>
+              <input type="password" placeholder="Enter Password" id="form2Example28" name="AdminPassword"  class="form-control form-control-lg" />
+              <label class="form-label" for="form2Example28"></label>
             </div>
 
             <div class="pt-1 mb-4">
@@ -61,12 +59,6 @@ include 'connect.php';
 </section>
 
 
-
-
-
-
-
-
     <?php
 
 
@@ -76,6 +68,9 @@ include 'connect.php';
         $sql= "SELECT * FROM `admin` WHERE `Admin_Name`= '$_POST[AdminName]' AND `Admin_Password`= '$_POST[AdminPassword]'" ;
       $result= mysqli_query($con,$sql);
            if(mysqli_num_rows($result)==1){
+           
+            session_start();
+            $_SESSION['AdminLoginid']=$_POST['AdminName'];
             header("location:display.php");
            }
            else{

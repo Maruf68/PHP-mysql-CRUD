@@ -2,6 +2,13 @@
 
 include 'connect.php';
 
+session_start();
+
+if(!isset($_SESSION['AdminLoginid'])){
+  header("location:admin_login.php");
+}
+
+
  ?>
 
 
@@ -18,14 +25,42 @@ include 'connect.php';
 <body>
     
 <div class="container">
- <button class="btn btn-primary my-5"><a href="user.php" class="text-light" > Add user
+
+<form method="post">  
+<button class="btn btn-primary my-5"><a href="user.php" class="text-light" > Add user
+
+</a>
+</button>
+ <button class="pick btn btn-warning" name="signout" class="pick btn btn-warning my-5">Logout </button>
+ </form>
+
+
+
+
 <style>
     a{
         text-decoration:none;
     }
+   
+    .pick{
+      margin-left:770px;
+    }
     </style>
-</a>
- </button>
+
+
+
+
+ <?php
+
+if(isset($_POST['signout'])){
+  session_destroy();
+  header("location:admin_login.php");
+}
+
+ ?>
+
+
+
  <table class="table table-striped">
   <thead>
     <tr>
@@ -40,6 +75,8 @@ include 'connect.php';
   <tbody>
 
   <?php
+
+
  $sql =" Select * from `user`";
  $result=mysqli_query($con,$sql);
 if($result){
